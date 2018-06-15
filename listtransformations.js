@@ -39,3 +39,31 @@ var gameLoop = function() {
     }
   }
 };
+
+//destructure this nested data structure into two variables with the string 'red' and 'orange'
+
+var [color, color2] = [suspects[0].color, suspects[1].color];
+
+var [{ color: firstColor }, { color: secondColor }] = suspects;
+
+//using functions to transform a list.
+
+function CreateSuspectObjects(name) {
+  return {
+    name: name,
+    color: name.split(" ")[2],
+    speak() {
+      console.log("my name is ", name);
+    }
+  };
+}
+
+var suspects = ["Miss Scarlet", "Colonel Mustard", "Mr. White"];
+
+var suspectList = [];
+
+x = CreateSuspectObjects("Miss Scarlet");
+
+for (var i = 0; i < suspects.length; i++) {
+  suspetsList.push(CreateSuspectObjects(suspects[i]));
+}
