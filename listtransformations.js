@@ -140,3 +140,48 @@ _.map = function(list, callback) {
 _.map([1, 2, 3], function(val) {
   return val + 1;
 });
+
+// FILTER PRACTICE
+
+const _ = {};
+
+_.filter = function(arr, cb) {
+  //create new array
+  const storage = [];
+  //loop through the array
+  for (let i = 0; i < arr.length; i++) {
+    //check if cb returns true
+
+    if (cb(arr[i], i, arr) === true) {
+      //if returns true, push into array
+      storage.push(arr[i]);
+    }
+  }
+  //return arr
+  return storage;
+};
+
+// same thing using each instead
+
+const _ = {};
+
+_.filter = function(arr, cb) {
+  //create new array
+  const storage = [];
+  //loop through the array
+  _.each(arr, function(val, i, list) {
+    if (cb(val, i, list)) storage.push(item);
+  });
+  //return arr
+  return storage;
+};
+
+// EXAMPLE DATA IN SLIDES
+
+// just taking notes on filter functionality with data.
+
+const _ = {};
+
+_.filter(videoData, function(suspectObject) {
+  return suspectObject.present;
+});
