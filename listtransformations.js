@@ -67,3 +67,76 @@ x = CreateSuspectObjects("Miss Scarlet");
 for (var i = 0; i < suspects.length; i++) {
   suspetsList.push(CreateSuspectObjects(suspects[i]));
 }
+
+//_.each practice
+
+const _ = {};
+
+_.each = function(list, callback) {
+  if (Array.isArray(list)) {
+    for (var i = 0; i < list.length; i++) {
+      // call the callback with a list item
+      callback(list[i], i, list);
+    }
+  } else {
+    // meaning if it's an object
+    //loop through list
+    // call the callback with a list item
+    for (var ket in list) {
+      callback(list[key], key, list);
+    }
+  }
+};
+
+_.each(["sally", "georgie", "othername"], function(name, i) {
+  if (list[i + 1]) {
+    console.log(name, "is younger than", list[i + 1]);
+  } else {
+    console.log(name, "is the oldest");
+  }
+});
+
+// _.map practice
+
+const weapons = ["candlestick", "lead pipe", "revolver"];
+
+const makeBroken = function(item) {
+  return `broken ${item}`;
+};
+
+const brokenWeapons = _.map(weapons, makeBroken);
+
+brokenWeapons;
+// returns an array that says (ex: ['broken candlestick', 'broken pipe', 'broken revolver'])
+
+// practicing looping with _.map
+
+_.map = function(list, callback) {
+  //create an empty array to store
+  var storage = [];
+  //loop
+  for (var i = 0; i < list.length; i++) {
+    //callback(element)
+    //push it to our array
+    storage.push(callback(list[i], i, list));
+  }
+  //return []
+  return storage;
+};
+
+_.map([1, 2, 3], function(val) {
+  return val + 1;
+});
+
+// same thing using each instead
+_.map = function(list, callback) {
+  var storage = [];
+  _.each(list, function(v, i, list) {
+    storage.push(callback(v, i, list));
+  });
+  return storage;
+};
+
+_.map([1, 2, 3], function(val) {
+  return val + 1;
+});
